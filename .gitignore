@@ -1,0 +1,13 @@
+/build
+/node_modules
+/dist
+/docs/out/
+
+jest/node_modules/
+
+cts/jest/node_modules/
+
+*.zip
+
+docs/jsdoc/node_modules/
+docs/ink-docstrap/node_modules/
