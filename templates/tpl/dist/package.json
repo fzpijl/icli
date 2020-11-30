@@ -41,9 +41,8 @@
     "--reporter=default",
     "--json",
     "--runInBand",
-    "--outputFile=${__dirname}/result.json"
+    "--outputFile=${__dirname}/result.json",
+    "--verbose"
   ],
-  "_IrisNodeArgs": [
-
-  ]
+  "_IrisNodeArgs": []
 }

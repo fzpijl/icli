@@ -81,11 +81,29 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("XRWeb");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const {app} = __webpack_require__(0)
+
+global.app = app
+
+__webpack_require__(2)
+__webpack_require__(3)
+__webpack_require__(4)
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -96,15 +114,15 @@
  */
 // const { app } = require("XRWeb")
 
-console.log('begin test  iris-view in test.js')
-console.log('iris-view app', app)
 
-process.on('uncaughtException', (e) => {
-    console.log('iris-view in uncaughte', e)
-})
+
+console.log('begin test  iris-view in App.test.js')
+
+// jest.resetModules()
+
 
 afterAll(() => {
-    console.log('iris-view end in test')
+    console.log('iris-view end in App.test.js')
 })
 
 // 每个函数测试前后销毁所有的 window
@@ -117,7 +135,6 @@ afterAll(() => {
 // })
 
 describe('app.createWindow', () => {
-
     it('如果没有传 type 参数，或者传入的参数不是 "2d", "3d", 应该抛出异常', () => {
         expect(() => {
             app.createWindow();
@@ -191,10 +208,8 @@ describe('app.getWindowById', () => {
 describe('app.findWindowById', () => {
     it('应该返回之前创建过的 window 的  id ', () => {
         app.destroyAllWindows();
-        console.log('findWindowById')
         let w1 = app.createWindow({ type: '2d', id: 'hello' });
         let w2 = app.findWindowById('hello');
-        console.log(w1, w2, w1 === w2, 'iris-view')
         expect(w1 === w2).toBe(true);
     });
     app.destroyAllWindows();
@@ -236,7 +251,7 @@ describe('app.createElement', () => {
 
 describe('channel', () => {
     it('app.joinChannel 之后 可以 收到 app.broadcastMessage 发送的消息', done => {
-        const { Message } = __webpack_require__(1);
+        const { Message } = __webpack_require__(0);
         app.joinChannel('ccc');
         app.on('message', (msg) => {
             try {
@@ -307,10 +322,86 @@ describe('app.<getSingleton> 测试', () => {
 
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("XRWeb");
+/*
+ * Copyright(C) IrisView Limited - All Rights Reserved
+ * 
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential
+ */
+
+
+describe('AppManager', ()=> {
+    
+
+  it('lanuageChanged 事件能正确注册',  () => {    
+    let am = app.getAppManager();
+    
+    expect(()=> {
+        am.on("appStatusChange",(packageName, status)=>{
+            console.log('packageName :', packageName );
+            console.log('appStatus :', status );
+         });
+    }).not.toThrow();
+  }) ;
+  
+})
+
+// afterAll(()=> {
+//   setTimeout(()=> {
+//     app.stop();
+//   }, 1000);
+// })
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+/*
+ * Copyright(C) IrisView Limited - All Rights Reserved
+ * 
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential
+ */
+
+// const { app } = require("XRWeb")
+
+
+console.log('begin test  iris-view in Locale.test.js')
+
+// jest.resetModules()
+afterAll(() => {
+  console.log('iris-view end in Locale.test.js')
+})
+
+
+
+describe('Locale', ()=> {
+    it('getLanguage 方法能被调用', () => {      
+        let locale = app.getLocale();
+        let language = locale.getLanguage();
+        expect(typeof language).toBe('string'); 
+   });
+
+  it('lanuageChanged 事件能正确注册',  () => {    
+    let locale = app.getLocale();
+    
+    expect(()=> {
+        locale.on("lanuageChanged",(language)=> {
+            console.log("--------------Entering languageChanged Event--------------");
+            console.log("New Language: ", language);
+        });
+    }).not.toThrow();
+}) ;
+  
+})
+
+
+// afterAll(()=> {
+//     app.stop();
+// })
 
 /***/ })
 /******/ ]);

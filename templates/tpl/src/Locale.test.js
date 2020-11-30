@@ -7,15 +7,14 @@
 
 // const { app } = require("XRWeb")
 
+
 console.log('begin test  iris-view in Locale.test.js')
-console.log('iris-view app', app)
+
+// jest.resetModules()
 afterAll(() => {
-  console.log('iris-view end in Locale.test')
+  console.log('iris-view end in Locale.test.js')
 })
 
-beforeEach(() => {
-  jest.resetModules()
-})
 
 
 describe('Locale', ()=> {

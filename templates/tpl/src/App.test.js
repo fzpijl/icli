@@ -6,21 +6,15 @@
  */
 // const { app } = require("XRWeb")
 
-const jestConfig = require('../jest.config')
 
-console.log('begin test  iris-view in test.js')
-console.log('iris-view app', app)
 
-beforeEach(() => {
-    jest.resetModules()
-})
+console.log('begin test  iris-view in App.test.js')
 
-process.on('uncaughtException', (e) => {
-    console.log('iris-view in uncaughte', e)
-})
+// jest.resetModules()
+
 
 afterAll(() => {
-    console.log('iris-view end in test')
+    console.log('iris-view end in App.test.js')
 })
 
 // 每个函数测试前后销毁所有的 window
@@ -33,7 +27,6 @@ afterAll(() => {
 // })
 
 describe('app.createWindow', () => {
-
     it('如果没有传 type 参数，或者传入的参数不是 "2d", "3d", 应该抛出异常', () => {
         expect(() => {
             app.createWindow();
@@ -107,10 +100,8 @@ describe('app.getWindowById', () => {
 describe('app.findWindowById', () => {
     it('应该返回之前创建过的 window 的  id ', () => {
         app.destroyAllWindows();
-        console.log('findWindowById')
         let w1 = app.createWindow({ type: '2d', id: 'hello' });
         let w2 = app.findWindowById('hello');
-        console.log(w1, w2, w1 === w2, 'iris-view')
         expect(w1 === w2).toBe(true);
     });
     app.destroyAllWindows();
