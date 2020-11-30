@@ -1,10 +1,12 @@
 // jest.config.js
 const { defaults } = require('jest-config');
-console.log(defaults)
+const { app } = require('XRWeb')
 module.exports = {
   // ...
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   testEnvironment: 'node',
+  globals: { app },
+  injectGlobals: true
   // ...
 };
 // jestcts": [

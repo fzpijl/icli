@@ -5,7 +5,14 @@
  * Proprietary and confidential
  */
 
-const {app} = require("XRWeb")
+// const { app } = require("XRWeb")
+
+console.log('begin test  iris-view in Locale.test.js')
+console.log('iris-view app', app)
+afterAll(() => {
+  console.log('iris-view end in Locale.test')
+})
+
 
 describe('Locale', ()=> {
     it('getLanguage 方法能被调用', () => {      
@@ -28,8 +35,6 @@ describe('Locale', ()=> {
 })
 
 
-afterAll(()=> {
-  setTimeout(()=> {
-    app.stop();
-  }, 1000);
-})
+// afterAll(()=> {
+//     app.stop();
+// })

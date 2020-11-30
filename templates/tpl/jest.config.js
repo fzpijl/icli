@@ -1,10 +1,10 @@
 // jest.config.js
 const { defaults } = require('jest-config');
-console.log(defaults)
 module.exports = {
   // ...
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   testEnvironment: 'node',
+  injectGlobals: true
   // ...
 };
 // jestcts": [

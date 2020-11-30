@@ -4,12 +4,23 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * Proprietary and confidential
  */
-const { app } = require("XRWeb")
+// const { app } = require("XRWeb")
 
-console.log('begin test iris-view')
+const jestConfig = require('../jest.config')
+
+console.log('begin test  iris-view in test.js')
+console.log('iris-view app', app)
+
+beforeEach(() => {
+    jest.resetModules()
+})
 
 process.on('uncaughtException', (e) => {
     console.log('iris-view in uncaughte', e)
+})
+
+afterAll(() => {
+    console.log('iris-view end in test')
 })
 
 // 每个函数测试前后销毁所有的 window
@@ -201,11 +212,9 @@ describe('app.<getSingleton> 测试', () => {
     });
 })
 
-afterAll(() => {
-    setTimeout(() => {
-        app.stop();
-    }, 3000);
-})
+// afterAll(() => {
+//         app.stop();
+// })
 
 
 

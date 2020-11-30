@@ -81,17 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = require("XRWeb");
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -100,12 +94,17 @@ module.exports = require("XRWeb");
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * Proprietary and confidential
  */
-const { app } = __webpack_require__(0)
+// const { app } = require("XRWeb")
 
-console.log('begin test iris-view')
+console.log('begin test  iris-view in test.js')
+console.log('iris-view app', app)
 
 process.on('uncaughtException', (e) => {
     console.log('iris-view in uncaughte', e)
+})
+
+afterAll(() => {
+    console.log('iris-view end in test')
 })
 
 // 每个函数测试前后销毁所有的 window
@@ -237,7 +236,7 @@ describe('app.createElement', () => {
 
 describe('channel', () => {
     it('app.joinChannel 之后 可以 收到 app.broadcastMessage 发送的消息', done => {
-        const { Message } = __webpack_require__(0);
+        const { Message } = __webpack_require__(1);
         app.joinChannel('ccc');
         app.on('message', (msg) => {
             try {
@@ -297,17 +296,21 @@ describe('app.<getSingleton> 测试', () => {
     });
 })
 
-afterAll(() => {
-    setTimeout(() => {
-        app.stop();
-    }, 3000);
-})
+// afterAll(() => {
+//         app.stop();
+// })
 
 
 
 
 
 
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("XRWeb");
 
 /***/ })
 /******/ ]);
