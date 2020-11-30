@@ -9,7 +9,7 @@ const outputPath = path.resolve(__dirname, 'dist')
 
 const config = {
     mode: 'development',
-    entry: {index: './src/test.js'},
+    entry: {index: './src/index.js'},
     devtool:false, 
     output: {
         path: outputPath,
@@ -88,10 +88,10 @@ const config = {
                 {
                     from: './index.xml'
                 },
-                {
-                    from: './src/*.test.js',
-                    flatten: true
-                },
+                // {
+                //     from: './src/*.test.js',
+                //     flatten: true
+                // },
                 { 
                     from: './XRManifest.xml'
                 }, {
