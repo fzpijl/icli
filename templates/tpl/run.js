@@ -14,7 +14,5 @@ console.log(process)
 //     console.log(`子进程退出，退出码 ${code}`);
 // });
 
-// fs.readFile('./test.js', 'utf8', (err, data) => {
-//     eval(data)
-// })
+
 
